@@ -1,0 +1,20 @@
+create table Test(id integer);
+insert into Test(id) values(1);
+insert into Test(id) values(2);
+insert into Test(id) values(1);
+insert into Test(id) values(5);
+insert into Test(id) values(NULL);
+insert into Test(id) values(NULL);
+
+create table Test1(id integer);
+insert into Test1(id) values(1);
+insert into Test1(id) values(3);
+insert into Test1(id) values(1);
+insert into Test1(id) values(1);
+insert into Test1(id) values(NULL);
+insert into Test1(id) values(7);
+select * from Test T inner join Test1 T1 on T.id=T1.id;
+-- Your code here!
+
+
+link:https://paiza.io/projects/6bHOO-cLZJidsq9tNCGtBg?language=mysql
