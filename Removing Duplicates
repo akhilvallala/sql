@@ -1,0 +1,26 @@
+--By Rank
+DELETE E
+    FROM [SampleDB].[dbo].[Employee] E
+         INNER JOIN
+    (
+        SELECT *, 
+               RANK() OVER(PARTITION BY firstname, 
+                                        lastname, 
+                                        country
+               ORDER BY id) rank
+        FROM [SampleDB].[dbo].[Employee]
+    ) T ON E.ID = t.ID
+    WHERE rank > 1;
+    
+--By max
+DELETE FROM [SampleDB].[dbo].[Employee]
+    WHERE ID NOT IN
+    (
+        SELECT MAX(ID) AS MaxRecordID
+        FROM [SampleDB].[dbo].[Employee]
+        GROUP BY [FirstName], 
+                 [LastName], 
+                 [Country]
+    );
+    
+Link: https://www.sqlshack.com/different-ways-to-sql-delete-duplicate-rows-from-a-sql-table/
